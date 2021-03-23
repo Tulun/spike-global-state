@@ -2,8 +2,8 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import App from "components/App";
 import ReduxWithObservables from "components/redux-with-observables";
 import ContextWithAsync from "components/context-with-async";
-import ReactQueryView from "components/react-query-view";
-
+import ReactQueryView from "components/react-query";
+import QueryProvider from "components/react-query/ReactQueryProvider";
 import { Layout } from "antd";
 import UsersProvider from "components/context-with-async/usersContext";
 
@@ -34,7 +34,9 @@ export default function Router() {
         <Content>
           <Switch>
             <Route path="/react-query">
-              <ReactQueryView />
+              <QueryProvider>
+                <ReactQueryView />
+              </QueryProvider>
             </Route>
             <Route path="/redux-with-observables">
               <ReduxWithObservables />
