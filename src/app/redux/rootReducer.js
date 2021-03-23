@@ -1,5 +1,7 @@
 import { combineReducers } from "redux";
 import counterReducer from "features/counter/counterSlice";
+
+// Stub for now.
 const pingReducer = (state = { isPinging: false }, action) => {
   switch (action.type) {
     case "PING":
@@ -12,6 +14,7 @@ const pingReducer = (state = { isPinging: false }, action) => {
       return state;
   }
 };
+
 export default combineReducers({
   counter: counterReducer,
   ping: pingReducer,

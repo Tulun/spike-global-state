@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { App } from "components/App";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import App from "components/App";
 
 export default function Router() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <nav>
           <ul>
@@ -29,10 +29,10 @@ export default function Router() {
             <Users />
           </Route> */}
           <Route path="/">
-            <Home />
+            <App />
           </Route>
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
