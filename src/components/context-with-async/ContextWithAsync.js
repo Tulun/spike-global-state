@@ -5,6 +5,7 @@ import { Row, Col, Button } from "antd";
 const ContextWithObservables = () => {
   const users = useContext(UsersContext);
 
+  // Could be pulled out into own hook.
   useEffect(() => {
     if (users && users.usersState.fetching) {
       users.usersActions.fetchUsers();
