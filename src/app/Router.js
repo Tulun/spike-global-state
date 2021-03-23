@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import App from "components/App";
 import ReduxWithObservables from "components/redux-with-observables";
 import ContextWithAsync from "components/context-with-async";
+import ReactQueryView from "components/react-query-view";
 
 import { Layout } from "antd";
 import UsersProvider from "components/context-with-async/usersContext";
@@ -22,6 +23,9 @@ export default function Router() {
             <li>
               <Link to="/context-with-async">Context + ContextWithAsync</Link>
             </li>
+            <li>
+              <Link to="/react-query">React Query</Link>
+            </li>
           </ul>
         </nav>
 
@@ -29,6 +33,9 @@ export default function Router() {
             renders the first one that matches the current URL. */}
         <Content>
           <Switch>
+            <Route path="/react-query">
+              <ReactQueryView />
+            </Route>
             <Route path="/redux-with-observables">
               <ReduxWithObservables />
             </Route>

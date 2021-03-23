@@ -16,15 +16,18 @@ const reducer = (state, action) => {
     case FETCH_USERS:
       return {
         ...state,
+        fetching: true,
       };
     case FETCH_USERS_SUCCESS:
       return {
         ...state,
         users: action.payload,
+        fetching: false,
       };
     case FETCH_USERS_ERROR:
       return {
         ...state,
+        fetching: false,
       };
     default:
       return state;
@@ -47,6 +50,9 @@ const createActions = (dispatch) => {
           type: FETCH_USERS_ERROR,
         });
       }
+    },
+    fetchUsersStart: () => {
+      return dispatch({ type: FETCH_USERS });
     },
   };
 

@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UsersContext } from "./usersContext";
 import { Row, Col, Button } from "antd";
-// import useObservable from "./useObservable";
-// import { getUsers } from "./usersObservables";
 
 const ContextWithObservables = () => {
   const users = useContext(UsersContext);
-  console.log("users", users);
 
-  // const [users, dispatch] = useObservable(getUsers);
+  useEffect(() => {
+    if (users && users.usersState.fetching) {
+      users.usersActions.fetchUsers();
+    }
+  }, [users]);
+
   return (
     <div>
       <Row gutter={16} style={{ padding: "24px" }}>
@@ -16,35 +18,27 @@ const ContextWithObservables = () => {
           <h2>Context With Observables Route</h2>
         </Col>
         <Col xs={24}>
-          <Button onClick={() => users.usersActions.fetchUsers()}>
+          <Button onClick={() => users.usersActions.fetchUsersStart()}>
             Get Users
           </Button>
-          {/* <Button onClick={() => dispatch()}>Get Users</Button>{" "} */}
         </Col>
-        <Col xs={24}>
-          {users && users.usersState.users.length ? (
-            <ul>
-              {users.usersState.users.map(({ name, id }) => {
-                return (
-                  <li key={id}>
-                    id: {id}, name: {name}
-                  </li>
-                );
-              })}
-            </ul>
-          ) : null}
-          {/* {users && users.length ? (
-            <ul>
-              {users.map(({ name, id }) => {
-                return (
-                  <li key={id}>
-                    id: {id}, name: {name}
-                  </li>
-                );
-              })}
-            </ul>
-          ) : null} */}
-        </Col>
+        {users.usersState.fetching ? (
+          <div>Loading...</div>
+        ) : (
+          <Col xs={24}>
+            {users && users.usersState.users.length ? (
+              <ul>
+                {users.usersState.users.map(({ name, id }) => {
+                  return (
+                    <li key={id}>
+                      id: {id}, name: {name}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+          </Col>
+        )}
       </Row>
     </div>
   );
