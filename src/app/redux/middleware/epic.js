@@ -1,13 +1,6 @@
 import { combineEpics } from "redux-observable";
-import { delay, filter, mapTo } from "rxjs/operators";
+import { getPostsEpic } from "components/redux-with-observables/postsEpic";
 
-const pingEpic = (action$) =>
-  action$.pipe(
-    filter((action) => action.type === "PING"),
-    delay(1000), // Asynchronously wait 1000ms then continue
-    mapTo({ type: "PONG" })
-  );
-
-const rootEpic = combineEpics(pingEpic);
+const rootEpic = combineEpics(getPostsEpic);
 
 export default rootEpic;
