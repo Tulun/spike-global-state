@@ -38,7 +38,6 @@ const ReduxWithObservables = () => {
                   </li>
                 );
               })}
-              }
             </ul>
           ) : null}
         </Col>
