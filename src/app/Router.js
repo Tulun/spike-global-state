@@ -1,10 +1,10 @@
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import App from "components/App";
 import ReduxWithObservables from "components/redux-with-observables";
-import ContextWithObservables from "components/context-with-observables";
+import ContextWithAsync from "components/context-with-async";
 
 import { Layout } from "antd";
-import UsersProvider from "components/context-with-observables/usersContext";
+import UsersProvider from "components/context-with-async/usersContext";
 
 const { Content } = Layout;
 export default function Router() {
@@ -20,7 +20,7 @@ export default function Router() {
               <Link to="/redux-with-observables">Redux + Observables</Link>
             </li>
             <li>
-              <Link to="/context-with-observables">Context + Observables</Link>
+              <Link to="/context-with-async">Context + ContextWithAsync</Link>
             </li>
           </ul>
         </nav>
@@ -32,9 +32,9 @@ export default function Router() {
             <Route path="/redux-with-observables">
               <ReduxWithObservables />
             </Route>
-            <Route path="/context-with-observables">
+            <Route path="/context-with-async">
               <UsersProvider>
-                <ContextWithObservables />
+                <ContextWithAsync />
               </UsersProvider>
             </Route>
             <Route path="/">

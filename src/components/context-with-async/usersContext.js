@@ -26,8 +26,9 @@ const reducer = (state, action) => {
       return {
         ...state,
       };
+    default:
+      return state;
   }
-  return state;
 };
 
 export const UsersContext = createContext();
