@@ -16,7 +16,7 @@ const ContextWithObservables = () => {
     <div>
       <Row gutter={16} style={{ padding: "24px" }}>
         <Col xs={24}>
-          <h2>Context With Observables Route</h2>
+          <h2>Context With Async</h2>
         </Col>
         <Col xs={24}>
           <Button onClick={() => users.usersActions.fetchUsersStart()}>
