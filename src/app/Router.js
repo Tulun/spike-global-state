@@ -3,6 +3,7 @@ import App from "components/App";
 import ReduxWithObservables from "components/redux-with-observables";
 import ContextWithAsync from "components/context-with-async";
 import ReactQueryView from "components/react-query";
+import ReactWiringView from "components/react-wiring";
 import QueryProvider from "components/react-query/ReactQueryProvider";
 import { Layout } from "antd";
 import UsersProvider from "components/context-with-async/usersContext";
@@ -26,6 +27,9 @@ export default function Router() {
             <li>
               <Link to="/react-query">React Query</Link>
             </li>
+            <li>
+              <Link to="/react-wiring">React Wiring</Link>
+            </li>
           </ul>
         </nav>
 
@@ -45,6 +49,9 @@ export default function Router() {
               <UsersProvider>
                 <ContextWithAsync />
               </UsersProvider>
+            </Route>
+            <Route path="/react-wiring">
+              <ReactWiringView />
             </Route>
             <Route path="/">
               <App />
