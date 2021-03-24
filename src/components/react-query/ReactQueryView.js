@@ -1,15 +1,13 @@
 import { Row, Col, Button } from "antd";
-import axios from "axios";
 import { useQuery } from "react-query";
+import userRequests from "./usersRequests";
 
 const ReactQueryView = () => {
-  const { isLoading, error, data } = useQuery("users", () =>
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.data)
+  const { isLoading, error, data, refetch } = useQuery(
+    "users",
+    userRequests.getUsers,
+    { enabled: false }
   );
-
-  if (isLoading) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
 
@@ -17,8 +15,10 @@ const ReactQueryView = () => {
     <Row gutter={16} style={{ padding: "24px" }}>
       <Col xs={24}>
         <h2>React Query View</h2>
+        <Button onClick={() => refetch()}>Fetch Users</Button>
       </Col>
       <Col xs={24}>
+        {isLoading ? <div>Loading...</div> : null}
         {data && data.length ? (
           <ul>
             {data.map(({ name, id }) => {
