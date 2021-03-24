@@ -13,3 +13,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - "/" contains the default with Redux, Redux Toolkit (etc). The Counter Slice also has async logic that uses Thunks, which could easily be adapted to API requests.
 - "/redux-with-observables" creates an example using redux-toolkit and creating a stream of Observables. This stream is defined in the postsEpic.js .
+- "/context-with-async" Shows a simple example of useReducer and useContext, using an async function with axios
+- "/react-query" implemenets a basic version with react-query.
