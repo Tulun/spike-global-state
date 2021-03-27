@@ -7,6 +7,7 @@ import ReactWiringView from "components/react-wiring";
 import QueryProvider from "components/react-query/ReactQueryProvider";
 import { Layout } from "antd";
 import UsersProvider from "components/context-with-async/usersContext";
+import ReactGlobalStateView, {GlobalStateProvider,handlers,defaultState} from "components/react-global-state";
 
 const { Content } = Layout;
 export default function Router() {
@@ -30,6 +31,9 @@ export default function Router() {
             <li>
               <Link to="/react-wiring">React Wiring</Link>
             </li>
+            <li>
+              <Link to="/react-global-state">React Global State</Link>
+            </li>
           </ul>
         </nav>
 
@@ -52,6 +56,11 @@ export default function Router() {
             </Route>
             <Route path="/react-wiring">
               <ReactWiringView />
+            </Route>
+            <Route path="/react-global-state">
+              <GlobalStateProvider handlers={handlers} defaultState={defaultState}>
+                <ReactGlobalStateView />
+              </GlobalStateProvider>
             </Route>
             <Route path="/">
               <App />
